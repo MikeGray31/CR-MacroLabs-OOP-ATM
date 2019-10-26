@@ -34,8 +34,6 @@ public class Account {
 
 
 
-
-
     //getters and setters--------------------------------------
     public double getBalance() {
         return balance;
