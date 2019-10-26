@@ -8,20 +8,21 @@ public class User {
     public User(String User, String password){
         this.userName = User;
         this.password = password;
+        this.accounts = new ArrayList<>();
     }
 
     public void UserMenu(){
         String s = " ";
         System.out.println(String.format("Welcome, %s",this.userName));
 
-        while(s != "6"){
+        while(s != "7"){
             System.out.println("What would you like to do?\n" +
                     "1. Deposit\n" +
                     "2. Withdrawal\n" +
                     "3. Transfer\n" +
-                    "4. Check account balances" +
+                    "4. Check account balances\n" +
                     "5. Open a new account\n" +
-                    "6. Delete an account" +
+                    "6. Delete an account\n" +
                     "7. Logout");
             s = Console.getStringInput(": ");
             switch (s) {
@@ -76,6 +77,7 @@ public class User {
         for(int i = 0; i < this.accounts.size(); i++){
             System.out.println(String.format("%s : %.2f",this.accounts.get(i).getType(), this.accounts.get(i).getBalance()));
         }
+        Console.getStringInput("");
     }
 
     public void openAccount(){
@@ -116,7 +118,26 @@ public class User {
     }
 
     public void deleteAccount(){
-        Account d = this.selectAccount("Select the account to transfer from: ");
+        Account d = this.selectAccount("Select the account to delete: ");
         accounts.remove(d);
     }
+
+    //Getters and Setters
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 }
