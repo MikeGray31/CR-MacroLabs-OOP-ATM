@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class User {
-    String userName;
-    String password;
-    ArrayList<Account> accounts;
+    private String userName;
+    private String password;
+    private ArrayList<Account> accounts;
 
     public User(String User, String password){
         this.userName = User;
@@ -12,7 +12,7 @@ public class User {
 
     public void UserMenu(){
         String s = " ";
-        System.out.println("Welcome.");
+        System.out.println(String.format("Welcome, %s",this.userName));
 
         while(s != "6"){
             System.out.println("What would you like to do?\n" +
@@ -32,8 +32,6 @@ public class User {
                     this.selectAccount("Select the account you would like to withdraw from: ").withdraw(Console.getDoubleInput("Withdrawal amount: "));
                     break;
                 case "3":
-                    Account a = this.selectAccount("Select the account to transfer from: ");
-                    Account b = this.selectAccount("Select the account to transfer to: ");
                     this.transfer();
                     break;
                 case "4":
@@ -52,21 +50,31 @@ public class User {
     }
 
     public void transfer(){
+        Account a = this.selectAccount("Select the account to transfer from: ");
+        Account b = this.selectAccount("Select the account to transfer to: ");
+        double transferAmount = Console.getDoubleInput("Amount to transfer: ");
 
+        if(transferAmount > b.getBalance() || b.getBalance() == 0){
+            System.out.println("Amount exceeds balance in " + a.getType());
+        }
+        else{
+            a.withdraw(transferAmount);
+            b.deposit(transferAmount);
+        }
     }
 
     public Account selectAccount(String prompt){
         System.out.println(prompt);
         for(int i = 0; i < accounts.size(); i++){
-            System.out.println(String.format("%d %s : %.2f", i+1, accounts.get(i).getType(), accounts.get(i).getBalance()));
+            System.out.println(String.format("%d %s : %.2f", i+1, this.accounts.get(i).getType(), this.accounts.get(i).getBalance()));
         }
-        return(accounts.get(Console.getIntegerInput(":")-1));
-
+        Account selected = accounts.get(Console.getIntegerInput(":")-1);
+        return selected;
     }
 
     public void listAccounts(){
-        for(int i = 0; i < accounts.size(); i++){
-            System.out.println(String.format("%s : %.2f",accounts.get(i).getType(), accounts.get(i).getBalance()));
+        for(int i = 0; i < this.accounts.size(); i++){
+            System.out.println(String.format("%s : %.2f",this.accounts.get(i).getType(), this.accounts.get(i).getBalance()));
         }
     }
 
@@ -108,6 +116,7 @@ public class User {
     }
 
     public void deleteAccount(){
-        
+        Account d = this.selectAccount("Select the account to transfer from: ");
+        accounts.remove(d);
     }
 }
