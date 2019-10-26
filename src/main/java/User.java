@@ -11,49 +11,71 @@ public class User {
     }
 
     public void UserMenu(){
-        System.out.println("Welcome %s. What would you like to do:\n\n" +
-                "1. Make a deposit\n" +
-                "2. Make a withdrawal\n" +
-                "3. Make a transfer\n" +
-                "4. Open a new account" +
-                "5. Check account balances" +
-                "6. Exit");
+        String s = " ";
+        System.out.println("Welcome.");
 
-        String s = Console.getStringInput(": ");
-
-        switch (s) {
-
-            case "1":
-
-                break;
-
-            case "2":
-
-                break;
-
-            case "3":
-
-                break;
-
-            case "4":
-                break;
-
-            case "5":
-                break;
-
-            case "6": break;
-
-            default: break;
+        while(s != "6"){
+            System.out.println("What would you like to do?\n" +
+                    "1. Deposit\n" +
+                    "2. Withdrawal\n" +
+                    "3. Transfer\n" +
+                    "4. Check account balances" +
+                    "5. Open a new account\n" +
+                    "6. Delete an account" +
+                    "7. Logout");
+            s = Console.getStringInput(": ");
+            switch (s) {
+                case "1":
+                    this.selectAccount("Select the account you would like to deposit into: ").deposit(Console.getDoubleInput("Deposit amount: "));
+                    break;
+                case "2":
+                    this.selectAccount("Select the account you would like to withdraw from: ").withdraw(Console.getDoubleInput("Withdrawal amount: "));
+                    break;
+                case "3":
+                    Account a = this.selectAccount("Select the account to transfer from: ");
+                    Account b = this.selectAccount("Select the account to transfer to: ");
+                    this.transfer();
+                    break;
+                case "4":
+                    this.listAccounts();
+                    break;
+                case "5":
+                    this.openAccount();
+                    break;
+                case "6":
+                    this.deleteAccount();
+                    break;
+                case "7": break;
+                default: break;
+            }
         }
     }
 
+    public void transfer(){
 
-    public void createAccount(){
+    }
+
+    public Account selectAccount(String prompt){
+        System.out.println(prompt);
+        for(int i = 0; i < accounts.size(); i++){
+            System.out.println(String.format("%d %s : %.2f", i+1, accounts.get(i).getType(), accounts.get(i).getBalance()));
+        }
+        return(accounts.get(Console.getIntegerInput(":")-1));
+
+    }
+
+    public void listAccounts(){
+        for(int i = 0; i < accounts.size(); i++){
+            System.out.println(String.format("%s : %.2f",accounts.get(i).getType(), accounts.get(i).getBalance()));
+        }
+    }
+
+    public void openAccount(){
         Integer s = 0;
         double initial;
         while(s != 4){
 
-            s = Console.getIntegerInput("What type of account do you want to create? \n" +
+            s = Console.getIntegerInput("What type of account do you want to create?\n" +
                 "1. Checking\n" +
                 "2. Saving\n"+
                 "3. Investment\n" +
@@ -83,5 +105,9 @@ public class User {
 
         }
 
+    }
+
+    public void deleteAccount(){
+        
     }
 }

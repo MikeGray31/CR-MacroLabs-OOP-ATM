@@ -14,7 +14,7 @@ public class Account {
 
     //deposit method ------------------------------------------
     public void deposit(double amount){
-        balance += amount;
+        this.balance += amount;
     }
 
     //withdrawal method ---------------------------------------
@@ -23,16 +23,9 @@ public class Account {
             System.out.println("Withdrawal requested exceeds account's current balance.");
         }
         else{
-            balance -= amount;
+            this.balance -= amount;
         }
     }
-
-    //check balance method ------------------------------------
-    public void checkBalance(){
-        System.out.println(String.format("Current balance in %s: %.2f",type, balance));
-    }
-
-
 
     //getters and setters--------------------------------------
     public double getBalance() {
