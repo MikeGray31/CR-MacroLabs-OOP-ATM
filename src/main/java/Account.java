@@ -2,6 +2,7 @@
 
 public class Account {
 
+
     private float balance;
     private String type;
 
@@ -9,6 +10,8 @@ public class Account {
         this.balance = initialDeposit;
         this.type = type;
     }
+
+    public Account(){};
 
     public void deposit(float amount){
 
