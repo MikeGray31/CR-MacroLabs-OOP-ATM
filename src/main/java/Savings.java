@@ -2,7 +2,7 @@
 
 public class Savings extends Account{
 
-    public Savings(float initialDeposit, String type){
+    public Savings(double initialDeposit, String type){
         super (initialDeposit,type);
     }
 }

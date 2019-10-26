@@ -3,45 +3,36 @@
 public class Account {
 
     //fields --------------------------------------------------
-    private float balance;
+    private double balance;
     private String type;
 
     //constructor ---------------------------------------------
-    public Account(float initialDeposit, String type){
+    public Account(double initialDeposit, String type){
         this.balance = initialDeposit;
         this.type = type;
     }
 
     //deposit method ------------------------------------------
-    public void deposit(float amount){
-        balance += amount;
+    public void deposit(double amount){
+        this.balance += amount;
     }
 
     //withdrawal method ---------------------------------------
-    public void withdraw(float amount){
+    public void withdraw(double amount){
         if (amount > balance){
             System.out.println("Withdrawal requested exceeds account's current balance.");
         }
         else{
-            balance -= amount;
+            this.balance -= amount;
         }
     }
 
-    //check balance method ------------------------------------
-    public void checkBalance(){
-        System.out.println(String.format("Current balance in %s: %.2f",type, balance));
-    }
-
-
-
-
-
     //getters and setters--------------------------------------
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
