@@ -10,6 +10,43 @@ public class User {
         this.password = password;
     }
 
+    public void UserMenu(){
+        System.out.println("Welcome %s. What would you like to do:\n\n" +
+                "1. Make a deposit\n" +
+                "2. Make a withdrawal\n" +
+                "3. Make a transfer\n" +
+                "4. Open a new account" +
+                "5. Check account balances" +
+                "6. Exit");
+
+        String s = Console.getStringInput(": ");
+
+        switch (s) {
+
+            case "1":
+
+                break;
+
+            case "2":
+
+                break;
+
+            case "3":
+
+                break;
+
+            case "4":
+                break;
+
+            case "5":
+                break;
+
+            case "6": break;
+
+            default: break;
+        }
+    }
+
 
     public void createAccount(){
         Integer s = 0;
@@ -25,19 +62,19 @@ public class User {
                 case 1:
                     initial =  Console.getDoubleInput("Initial deposit: ");
                     Account checking = new Account(initial, "Checking");
-                    accounts.add(checking);
+                    this.accounts.add(checking);
                     s = 4;
                     break;
                 case 2:
                     initial =  Console.getDoubleInput("Initial deposit: ");
                     Savings savings = new Savings(initial, "Savings");
-                    accounts.add(savings);
+                    this.accounts.add(savings);
                     s = 4;
                    break;
                 case 3:
                     initial =  Console.getDoubleInput("Initial deposit: ");
                     Investment investment = new Investment(initial, "Investment");
-                    accounts.add(investment);
+                    this.accounts.add(investment);
                     s = 4;
                     break;
                 case 4: break;
