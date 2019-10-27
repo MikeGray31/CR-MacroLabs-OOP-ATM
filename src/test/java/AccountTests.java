@@ -55,4 +55,30 @@ public class AccountTests {
         Assert.assertEquals(expected, actual, 0.00);
 
     }
+
+    @Test
+    public void withdrawalTest2(){
+        Account account = new Account(50000, "savings");
+        System.out.print(account.getBalance());
+        double expected = 39500;
+        account.withdraw(10500);
+        double actual = account.getBalance();
+
+
+        Assert.assertEquals(expected, actual, 0.00);
+
+    }
+
+    @Test
+    public void withdrawalTest3(){
+        Account account = new Account(123456, "savings");
+        System.out.print(account.getBalance());
+        double expected = 116666.5;
+        account.withdraw(6789.50);
+        double actual = account.getBalance();
+
+
+        Assert.assertEquals(expected, actual, 0.00);
+
+    }
 }
