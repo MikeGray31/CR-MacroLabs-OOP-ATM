@@ -6,7 +6,7 @@ public class Account {
     private double balance;
     private String type;
 
-    ArrayList <Double> transactionHistory = new ArrayList<Double>();
+    ArrayList <String> transactionHistory = new ArrayList<String>();
 
     //constructor ---------------------------------------------
     public Account(Double initialDeposit, String type){
@@ -17,7 +17,7 @@ public class Account {
     //deposit method ------------------------------------------
     public void deposit(Double amount){
         this.balance += amount;
-        transactionHistory.add(amount);
+        transactionHistory.add(String.format("Deposited %.2f\n balance: %.2f\n", amount, this.getBalance()));
     }
 
     //withdrawal method ---------------------------------------
@@ -28,7 +28,7 @@ public class Account {
         else{
             this.balance -= amount;
         }
-        transactionHistory.add(amount);
+        transactionHistory.add(String.format("Withdrew %.2f\n balance: %.2f\n", amount, this.getBalance()));
     }
 
     //print history method ------------------------------------

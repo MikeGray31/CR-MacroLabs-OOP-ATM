@@ -2,6 +2,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class AccountTests {
 
     @Test
@@ -58,10 +60,10 @@ public class AccountTests {
 
     @Test
     public void withdrawalTest2(){
-        Account account = new Account(50000, "savings");
+        Account account = new Account(50000.0, "savings");
         System.out.print(account.getBalance());
         double expected = 39500;
-        account.withdraw(10500);
+        account.withdraw(10500.0);
         double actual = account.getBalance();
 
 
@@ -71,7 +73,7 @@ public class AccountTests {
 
     @Test
     public void withdrawalTest3(){
-        Account account = new Account(123456, "savings");
+        Account account = new Account(123456.0, "savings");
         System.out.print(account.getBalance());
         double expected = 116666.5;
         account.withdraw(6789.50);
@@ -80,5 +82,42 @@ public class AccountTests {
 
         Assert.assertEquals(expected, actual, 0.00);
 
+    }
+
+    @Test
+    public void checkHistory1(){
+        Account account = new Account(10.00, "checking");
+        account.deposit(10.00);
+        account.deposit(11.00);
+        ArrayList <String> history= account.transactionHistory;
+        String expected = String.format("Deposited 10.00\n balance: 20.00\n");
+        String actual = account.transactionHistory.get(0);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkHistory2(){
+        Account account = new Account(10.00, "checking");
+        account.deposit(10.00);
+        account.deposit(11.00);
+        ArrayList <String> history= account.transactionHistory;
+        String expected = String.format("Deposited 11.00\n balance: 31.00\n");
+        String actual = account.transactionHistory.get(1);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkHistory3(){
+        Account account = new Account(10.00, "checking");
+        account.deposit(10.00);
+        account.deposit(11.00);
+        account.withdraw(5.00);
+        ArrayList <String> history= account.transactionHistory;
+        String expected = String.format("Withdrew 5.00\n balance: 26.00\n");
+        String actual = account.transactionHistory.get(2);
+
+        Assert.assertEquals(expected, actual);
     }
 }
