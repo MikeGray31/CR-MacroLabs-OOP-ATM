@@ -14,39 +14,46 @@ public class User {
     public void UserMenu(){
         String s = " ";
         System.out.println(String.format("Welcome, %s",this.userName));
+        try {
 
-        while(s != "7"){
-            System.out.println("What would you like to do?\n" +
-                    "1. Deposit\n" +
-                    "2. Withdrawal\n" +
-                    "3. Transfer\n" +
-                    "4. Check account balances\n" +
-                    "5. Open a new account\n" +
-                    "6. Delete an account\n" +
-                    "7. Logout");
-            s = Console.getStringInput(": ");
-            switch (s) {
-                case "1":
-                    this.selectAccount("Select the account you would like to deposit into: ").deposit(Console.getDoubleInput("Deposit amount: "));
-                    break;
-                case "2":
-                    this.selectAccount("Select the account you would like to withdraw from: ").withdraw(Console.getDoubleInput("Withdrawal amount: "));
-                    break;
-                case "3":
-                    this.transfer();
-                    break;
-                case "4":
-                    this.listAccounts();
-                    break;
-                case "5":
-                    this.openAccount();
-                    break;
-                case "6":
-                    this.deleteAccount();
-                    break;
-                case "7": break;
-                default: break;
+            while (s != "7") {
+                System.out.println("What would you like to do?\n" +
+                        "1. Deposit\n" +
+                        "2. Withdrawal\n" +
+                        "3. Transfer\n" +
+                        "4. Check account balances\n" +
+                        "5. Open a new account\n" +
+                        "6. Delete an account\n" +
+                        "7. Logout");
+                s = Console.getStringInput(": ");
+                switch (s) {
+                    case "1":
+                        this.selectAccount("Select the account you would like to deposit into: ").deposit(Console.getDoubleInput("Deposit amount: "));
+                        break;
+                    case "2":
+                        this.selectAccount("Select the account you would like to withdraw from: ").withdraw(Console.getDoubleInput("Withdrawal amount: "));
+                        break;
+                    case "3":
+                        this.transfer();
+                        break;
+                    case "4":
+                        this.listAccounts();
+                        break;
+                    case "5":
+                        this.openAccount();
+                        break;
+                    case "6":
+                        this.deleteAccount();
+                        break;
+                    case "7":
+                        break;
+                    default:
+                        break;
+                }
             }
+        }
+        catch(Exception e){
+            System.out.println("Error");
         }
     }
 
