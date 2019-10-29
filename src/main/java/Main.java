@@ -11,7 +11,7 @@ public class Main {
         String s = "";
         MainMenuFunctions userList = new MainMenuFunctions();
 
-        while(!s.equals("3")){
+        while(!s.equals("exit")){
             System.out.println("1. Login\n" +
                     "2. Create Account\n" +
                     "3. Exit Application\n");
@@ -28,6 +28,7 @@ public class Main {
                     //userList;
                     break;
                 case "3":
+                    s = "exit";
                     break;
             }
         }

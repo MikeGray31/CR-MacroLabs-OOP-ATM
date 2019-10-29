@@ -15,7 +15,7 @@ public class User {
         String s = " ";
         System.out.println(String.format("Welcome, %s",this.userName));
 
-        while(s != "7"){
+        while(s != "exit"){
             System.out.println("What would you like to do?\n" +
                     "1. Deposit\n" +
                     "2. Withdrawal\n" +
@@ -44,7 +44,9 @@ public class User {
                 case "6":
                     this.deleteAccount();
                     break;
-                case "7": break;
+                case "7":
+                    s = "exit";
+                    break;
                 default: break;
             }
         }
@@ -109,7 +111,9 @@ public class User {
                     this.accounts.add(investment);
                     s = 4;
                     break;
-                case 4: break;
+                case 4:
+                    s = 4;
+                    break;
                 default: break;
         }
 
