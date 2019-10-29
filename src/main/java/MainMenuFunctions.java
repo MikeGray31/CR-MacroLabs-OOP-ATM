@@ -7,8 +7,6 @@ public class MainMenuFunctions {
         String user = Console.getStringInput("Username: ");
         String pw = Console.getStringInput("Password: ");
         for (int i = 0; i < userList.size(); i++) {
-            System.out.println(userList.get(i).getUserName());
-            System.out.println(userList.get(i).getPassword());
             if (userList.get(i).getUserName().equals(user) && userList.get(i).getPassword().equals(pw)) {
                 return i;
             }

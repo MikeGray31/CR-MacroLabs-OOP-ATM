@@ -69,7 +69,7 @@ public class User {
         for(int i = 0; i < accounts.size(); i++){
             System.out.println(String.format("%d %s : %.2f", i+1, this.accounts.get(i).getType(), this.accounts.get(i).getBalance()));
         }
-        Account selected = accounts.get(Console.getIntegerInput(":")-1);
+        Account selected = accounts.get(Console.getIntegerInput(":")- 1);
         return selected;
     }
 

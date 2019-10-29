@@ -10,14 +10,24 @@ public class Account {
 
     //constructor ---------------------------------------------
     public Account(Double initialDeposit, String type){
-        this.balance = initialDeposit;
+        if(initialDeposit < 0){
+            System.out.println("Cannot deposit a negative amount.");
+        }
+        else{
+            this.balance = initialDeposit;
+        }
         this.type = type;
     }
 
     //deposit method ------------------------------------------
     public void deposit(Double amount){
-        this.balance += amount;
-        transactionHistory.add(String.format("Deposited %.2f\n balance: %.2f\n", amount, this.getBalance()));
+        if(amount <= 0){
+            System.out.println("Cannot deposit a negative amount.");
+        }
+        else{
+            this.balance += amount;
+            transactionHistory.add(String.format("Deposited %.2f\n balance: %.2f\n", amount, this.getBalance()));
+        }
     }
 
     //withdrawal method ---------------------------------------
@@ -25,10 +35,13 @@ public class Account {
         if (amount > balance){
             System.out.println("Withdrawal requested exceeds account's current balance.");
         }
+        else if(amount <= 0){
+            System.out.println("Cannot withdraw a negative amount.");
+        }
         else{
             this.balance -= amount;
+            transactionHistory.add(String.format("Withdrew %.2f\n balance: %.2f\n", amount, this.getBalance()));
         }
-        transactionHistory.add(String.format("Withdrew %.2f\n balance: %.2f\n", amount, this.getBalance()));
     }
 
     //print history method ------------------------------------
